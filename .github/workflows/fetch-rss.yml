@@ -1,0 +1,45 @@
+name: Fetch RSS Data
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'  # Her 6 saatte bir çalıştır
+  workflow_dispatch:  # Manuel tetikleme için
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+      
+      - name: Run RSS fetcher
+        run: |
+          python fetch_rss.py
+      
+      - name: Check if files changed
+        id: verify-changed-files
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "changed=true" >> $GITHUB_OUTPUT
+          else
+            echo "changed=false" >> $GITHUB_OUTPUT
+          fi
+      
+      - name: Commit and push changes
+        if: steps.verify-changed-files.outputs.changed == 'true'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add trend_data.csv summary.json
+          git commit -m "🔄 RSS verileri güncellendi: $(date '+%Y-%m-%d %H:%M')"
+          git push
