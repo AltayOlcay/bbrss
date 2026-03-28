@@ -1,0 +1,22 @@
+{
+  "last_update": "2026-03-28T13:23:04.020454",
+  "total_records": 200,
+  "sources": {
+    "mashable": 15,
+    "tmz": 15,
+    "variety": 10,
+    "hollywoodreporter": 10,
+    "rollingstone": 10,
+    "billboard": 10,
+    "pitchfork": 15,
+    "collider": 10,
+    "polygon": 10,
+    "kotaku": 15,
+    "theverge": 10,
+    "producthunt": 15,
+    "buzzfeed_ent": 15,
+    "mentalfloss": 15,
+    "boredpanda": 10,
+    "bbc_ent": 15
+  }
+}
