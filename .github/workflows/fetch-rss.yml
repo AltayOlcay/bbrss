@@ -1,7 +1,11 @@
 name: Fetch RSS Data
 
+#on:
+#  workflow_dispatch:  # Sadece manuel tetikleme
 on:
-  workflow_dispatch:  # Sadece manuel tetikleme
+  schedule:
+    - cron: '0 */6 * * *'  # Her 6 saatte bir çalıştır (00:00, 06:00, 12:00, 18:00)
+  workflow_dispatch:  # Manuel tetikleme de kalsın
 
 jobs:
   fetch:
@@ -17,15 +21,24 @@ jobs:
           python-version: '3.10'
       
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: |
+          pip install -r requirements.txt
       
       - name: Run RSS fetcher
-        run: python fetch_rss.py
+        run: |
+          python fetch_rss.py
       
-      - name: Commit and push
+      - name: Commit and push changes
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add trend_data.csv summary.json
-          git commit -m "Update RSS data: $(date '+%Y-%m-%d %H:%M')" || exit 0
-          git push
+          
+          # Yeni oluşan CSV dosyasını bul ve ekle
+          git add *_BBRssToCsv.csv
+          git add summary.json
+          
+          # Eğer değişiklik varsa commit et
+          git diff --staged --quiet || git commit -m "🔄 RSS verileri güncellendi: $(date '+%Y-%m-%d %H:%M')"
+          
+          # Push et
+          git push || echo "Değişiklik yok veya push hatası"
