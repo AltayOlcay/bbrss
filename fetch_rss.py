@@ -10,6 +10,7 @@ from collections import Counter
 
 # RSS ve JSON kaynakları (KAYNAK, URL, KATEGORI, AGIRLIK)
 SOURCES = {
+    """
     # Reddit - Tartışma odaklı (Yüksek etkileşim = Yüksek puan)
     "reddit_ask": {
         "url": "https://www.reddit.com/r/AskReddit/hot.json?limit=50",
@@ -205,7 +206,7 @@ SOURCES = {
         "agirlik": 1.0,
         "tip": "rss"
     },
-    
+    """
     # Onedio - Türkçe İçerik (Yüksek ağırlık çünkü hedef kitle TR)
     "onedio_gundem": {
         "url": "https://onedio.com/Publisher/publisher-gundem.rss",
