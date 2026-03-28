@@ -446,7 +446,7 @@ def main():
     
     # CSV dosya adı: YılAyGünSaatDakikaSaniye_BBRssToCsv.csv
     timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
-    csv_filename = f"{timestamp}_BBRssToCsv.csv"
+    csv_filename = f"data/{timestamp}_BBRssToCsv.csv"
     
     # CSV yaz
     with open(csv_filename, 'w', newline='', encoding='utf-8') as f:
