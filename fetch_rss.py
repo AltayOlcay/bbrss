@@ -7,7 +7,11 @@ from datetime import datetime
 
 # RSS ve JSON kaynakları
 SOURCES = {
+    # Reddit - Tartışma odaklı
     "reddit_ask": "https://www.reddit.com/r/AskReddit/hot.json?limit=50",
+    "reddit_unpopular": "https://www.reddit.com/r/unpopularopinion/hot.json?limit=50",
+    "reddit_wouldyourather": "https://www.reddit.com/r/WouldYouRather/hot.json?limit=50",
+    "reddit_polls": "https://www.reddit.com/r/polls/hot.json?limit=50",
     "reddit_funny": "https://www.reddit.com/r/funny/hot.json?limit=50",
     "reddit_movies": "https://www.reddit.com/r/movies/hot.json?limit=50",
     "reddit_gaming": "https://www.reddit.com/r/gaming/hot.json?limit=50",
@@ -16,29 +20,70 @@ SOURCES = {
     "reddit_sports": "https://www.reddit.com/r/sports/hot.json?limit=50",
     "reddit_music": "https://www.reddit.com/r/Music/hot.json?limit=50",
     "reddit_tv": "https://www.reddit.com/r/television/hot.json?limit=50",
-    "mashable": "https://mashable.com/feeds/rss/all",
-    "tmz": "https://www.tmz.com/rss.xml",
-    "variety": "https://variety.com/feed/",
-    "hollywoodreporter": "https://www.hollywoodreporter.com/feed/",
-    "rollingstone": "https://www.rollingstone.com/feed/",
-    "billboard": "https://www.billboard.com/feed/",
-    "pitchfork": "https://pitchfork.com/rss/news",
-    "ew": "https://ew.com/feed/",
-    "collider": "https://collider.com/feed/",
-    "tvguide": "https://www.tvguide.com/rss/news.xml",
-    "polygon": "https://www.polygon.com/rss/index.xml",
-    "kotaku": "https://kotaku.com/rss",
-    "ign": "https://www.ign.com/rss/articles.xml",
-    "theverge": "https://www.theverge.com/rss/index.xml",
-    "producthunt": "https://www.producthunt.com/feed",
+    
+    # Pop Kültürü & Eğlence
     "buzzfeed_ent": "https://www.buzzfeed.com/entertainment.xml",
     "vulture": "https://www.vulture.com/rss/all.xml",
     "theringer": "https://www.theringer.com/rss/pop-culture/index.xml",
     "eonline": "https://www.eonline.com/rss/feed/index.xml",
     "mentalfloss": "https://www.mentalfloss.com/rss.xml",
     "boredpanda": "https://www.boredpanda.com/feed/",
+    "upworthy": "https://www.upworthy.com/rss",
+    
+    # Oyun
+    "polygon": "https://www.polygon.com/rss/index.xml",
+    "kotaku": "https://kotaku.com/rss",
+    "ign": "https://www.ign.com/rss/articles.xml",
+    
+    # Teknoloji
+    "theverge": "https://www.theverge.com/rss/index.xml",
+    "producthunt": "https://www.producthunt.com/feed",
+    "mashable": "https://mashable.com/feeds/rss/all",
+    
+    # Google News
+    "google_ent_tr": "https://news.google.com/rss/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNREpxYW5RU0FtVnVHZ0pWVXlnQVAB?hl=tr&gl=TR&ceid=TR%3Atr",
+    "google_art_tr": "https://news.google.com/rss/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRFp0Y1RjU0FtVnVHZ0pWVXlnQVAB?hl=tr&gl=TR&ceid=TR%3Atr",
+    "google_sport_tr": "https://news.google.com/rss/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRFp1ZEdvU0FtVnVHZ0pWVXlnQVAB?hl=tr&gl=TR&ceid=TR%3Atr",
+    "google_ent_us": "https://news.google.com/rss/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNREpxYW5RU0FtVnVHZ0pWVXlnQVAB?hl=en-US&gl=US&ceid=US:en",
+    "google_art_us": "https://news.google.com/rss/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRFp0Y1RjU0FtVnVHZ0pWVXlnQVAB?hl=en-US&gl=US&ceid=US:en",
+    
+    # Global Haber & Magazin
+    "cnn_ent": "https://www.cnn.com/entertainment/rss.xml",
     "bbc_ent": "https://feeds.bbci.co.uk/news/entertainment_and_arts/rss.xml",
-    "cnn_ent": "https://www.cnn.com/entertainment/rss.xml"
+    "variety": "https://variety.com/feed/",
+    "hollywoodreporter": "https://www.hollywoodreporter.com/feed/",
+    "rollingstone": "https://www.rollingstone.com/feed/",
+    "billboard": "https://www.billboard.com/feed/",
+    "pitchfork": "https://pitchfork.com/rss/news",
+    "tmz": "https://www.tmz.com/rss.xml",
+    "people": "https://people.com/feed/",
+    "usmagazine": "https://www.usmagazine.com/feed/",
+    "ew": "https://ew.com/feed/",
+    "tvguide": "https://www.tvguide.com/rss/news.xml",
+    "collider": "https://collider.com/feed/",
+    "indiewire": "https://www.indiewire.com/feed/",
+    
+    # Onedio - Türkçe İçerik
+    "onedio_gundem": "https://onedio.com/Publisher/publisher-gundem.rss",
+    "onedio_spor": "https://onedio.com/Publisher/publisher-spor.rss",
+    "onedio_yazio": "https://onedio.com/Publisher/publisher-yazio.rss",
+    "onedio_test": "https://onedio.com/Publisher/publisher-test.rss",
+    "onedio_video": "https://onedio.com/Publisher/publisher-video.rss",
+    "onedio_yemek": "https://onedio.com/Publisher/publisher-yemek.rss",
+    "onedio_yasam": "https://onedio.com/Publisher/publisher-yasam.rss",
+    "onedio_seyahat": "https://onedio.com/Publisher/publisher-seyahat.rss",
+    "onedio_saglik": "https://onedio.com/Publisher/publisher-saglik.rss",
+    "onedio_vitrin": "https://onedio.com/Publisher/publisher-vitrin.rss",
+    "onedio_ekonomi": "https://onedio.com/Publisher/publisher-ekonomi.rss",
+    "onedio_finans": "https://onedio.com/Publisher/publisher-finans.rss",
+    "onedio_dizifilm": "https://onedio.com/Publisher/publisher-dizi+%26+film.rss",
+    "onedio_tv": "https://onedio.com/Publisher/publisher-tv.rss",
+    "onedio_goygoy": "https://onedio.com/Publisher/publisher-goygoy.rss",
+    "onedio_magazin": "https://onedio.com/Publisher/publisher-magazin.rss",
+    "onedio_gaming": "https://onedio.com/Publisher/publisher-gaming.rss",
+    "onedio_teknoloji": "https://onedio.com/Publisher/publisher-teknoloji.rss",
+    "onedio_egitim": "https://onedio.com/Publisher/publisher-egitim.rss",
+    "onedio_kultur": "https://onedio.com/Publisher/publisher-genel+kultur.rss"
 }
 
 def fetch_reddit_json(url, name):
