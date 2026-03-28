@@ -1,7 +1,15 @@
 {
-  "last_update": "2026-03-28T13:23:04.020454",
-  "total_records": 200,
-  "sources": {
+  "dosya_adi": "20260328151104_BBRssToCsv.csv",
+  "son_guncelleme": "2026-03-28T15:11:04.884030",
+  "toplam_kayit": 313,
+  "kaynaklar": {
+    "buzzfeed_ent": 15,
+    "mentalfloss": 15,
+    "boredpanda": 10,
+    "polygon": 10,
+    "kotaku": 15,
+    "theverge": 10,
+    "producthunt": 15,
     "mashable": 15,
     "tmz": 15,
     "variety": 10,
@@ -10,13 +18,15 @@
     "billboard": 10,
     "pitchfork": 15,
     "collider": 10,
-    "polygon": 10,
-    "kotaku": 15,
-    "theverge": 10,
-    "producthunt": 15,
-    "buzzfeed_ent": 15,
-    "mentalfloss": 15,
-    "boredpanda": 10,
-    "bbc_ent": 15
+    "onedio_gundem": 15,
+    "onedio_magazin": 15,
+    "onedio_dizifilm": 15,
+    "onedio_gaming": 2,
+    "onedio_teknoloji": 15,
+    "onedio_spor": 15,
+    "onedio_yemek": 6,
+    "onedio_yasam": 15,
+    "onedio_test": 15,
+    "onedio_goygoy": 15
   }
 }
